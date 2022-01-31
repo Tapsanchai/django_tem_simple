@@ -1,0 +1,35 @@
+{% load static %}
+<div class="col-4 col-md-2" >
+  <nav class="nav flex-column bg-light">
+    <div class="nav-link">
+      <img
+        src="{% static 'image/django-icon.jpg' %}"
+        alt="image error"
+        title="django-logo.png"
+        class="w-25"
+      />
+      <span class="text-dark align-middle">Django</span>
+    </div>
+    <a
+      class="nav-link active link-secondary"
+      aria-current="page"
+      href="{% url 'blogs:home' %}"
+      >Bolgs</a
+    >
+    {% if user.is_authenticated %}
+    <a class="nav-link link-danger" href="{% url 'blogs:user_logout' %}">Logout</a>
+    {% else %}
+    <a class="nav-link link-secondary" href="{% url 'blogs:user_register' %}"
+      >Register</a
+    >
+    <a
+      type="button"
+      class="nav-link link-secondary"
+      href="{% url 'blogs:link_login' 'show-popup' %}"
+      
+    >
+      Login
+    </a> 
+    {% include "login_modal.html" %} {% endif %}
+  </nav>
+</div>

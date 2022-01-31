@@ -1,0 +1,136 @@
+{% extends "bjs_tem_layout/bjs_root_tem.html" %}
+<!-- {% load crispy_forms_tags %} -->
+{% block web_title %}
+  {{page_title}}
+{% endblock web_title %}
+
+{% block javascript %}
+{% load static %}
+<script src="{% static 'js/homemake/bjs_update_blogs.js' %}"></script>
+<script type="text/javascript">
+    $(document).ready(() => {
+        
+    });
+</script>
+{% endblock javascript %}
+
+{% block main_content %}
+<div class="bg-light pl-3 pr-3">
+  <div class="pt-2 mb-3">
+    <div class="fs-4 fw-bold">Update Blogs</div>
+  </div>
+  <div class="mb-3">
+    <p>
+      <a class="text-decoration-none" href="{% url 'blog_js:index' %}">Home</a> > Update
+    </p>
+  </div>
+  
+  <div class="row">
+    <!-- {% load widget_tweaks %} -->
+    <form name="frm_update_blogs" id="frm_update_blogs" blog_id="{{ blog_data.id }}" action="" method="POST" class="col-sm-12 col-md-7 needs-validation" novalidate>
+      {% csrf_token %}
+
+    <div class="mb-2">
+        <label for="title" class="form-label">Title</label>
+        <input
+          type="text"
+          name="title"
+          class="form-control border border-warning"
+          id=""
+          placeholder="Blog Name..."
+          value="{{blog_data.title}}"
+        />
+        {% if form.errors.title %}
+        <div class="invalid-feedback d-block" id="">Title is required</div>
+        {% endif %}
+      </div>
+      <div class= "mb-3 ">
+        <label for="content" class="form-label">Content</label>
+        <textarea name="content" class="form-control border border-warning" id="" rows="3" placeholder="Blog Content...">{{blog_data.content}}</textarea>
+        {% if form.errors.content %}
+        <div class="invalid-feedback d-block" id="">Content is required</div>
+        {% endif %}
+      </div>
+
+      <div class="mb-3">
+        <label for="create_by" class="form-label">Create by</label>
+        <input
+          type="text"
+          name="create_by"
+          class="form-control border border-warning"
+          id=""
+          placeholder="Create by Name..."
+          value="{{blog_data.create_by}}"
+          
+        />
+        {% if form.errors.create_by %}
+        <div class="invalid-feedback d-block" id="">create_by is required</div>
+        {% endif %}
+      </div>
+
+      <div class="mb-3">
+        <label for="blog_type" class="form-label">Blogtype</label>
+        <select name="{{ form.blog_type.name }}" class="form-control border border-warning" id="id_blog_type">
+            <option value  >Please select...</option>
+            {% for instance in form.blog_type.field.queryset %}
+                {% if instance.type_name|safe == blog_data.blog_type|safe %}
+                <option value="{{ instance.id }}" selected="selected">{{ blog_data.blog_type }}</option>
+                {% else %}
+                <option value="{{ instance.id }}" >{{ instance.type_name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        {% if form.errors.blog_type %}
+            <div class="invalid-feedback d-block" id="">blog_type is required</div>
+        {% endif %}
+      </div> 
+
+      <div class="mb-4">
+        <label for="blog_hashtags" class="form-label">Blog tags</label>
+        <!-- <li>{{ form.blog_hashtags.field.choices|length }}</li> -->
+        <!-- <input type="hidden" name="chk_blog_hashtags_length" value="{{ form.blog_hashtags.field.choices|length }}"> -->
+        <br>
+        {% for value, text in form.blog_hashtags.field.choices %}
+        <div class="form-check form-check-inline">
+            {% if value in blog_data.blog_hashtags|safe %}
+            <input class="form-check-input" id="id_blog_hashtags_{{ forloop.counter0 }}" name="{{form.blog_hashtags.name}}[]"  type="checkbox" value="{{value}}" checked="checked"  >
+            <label class="form-check-label" for="blog_hashtags_value">{{ text }}</label>
+            {% else %}
+            <input class="form-check-input" id="id_blog_hashtags_{{ forloop.counter0 }}" name="{{form.blog_hashtags.name}}[]"  type="checkbox" value="{{value}}"  >
+            <label class="form-check-label" for="blog_hashtags_value">{{ text }}</label>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+        {% if form.errors.blog_hashtags %}
+            {% if "required" in form.errors.blog_hashtags|safe %}
+                <div class="invalid-feedback d-block" id="">blog_hashtags is required</div>
+            {% else %}
+                <div class="invalid-feedback d-block" id="">please selecet at least 2 tag</div>
+            {% endif %}
+        {% endif %}
+      </div>
+      
+      <div class="mb-3">
+        <div class="btn-group" role="group">
+          <a
+            id="submit_frm_update_blogs"
+            name="create_blogs"
+            class="btn btn-primary text-uppercase"
+          >
+          Create
+          </a>
+          <input
+            type="reset"
+            value="Reset"
+            name="Reset"
+            class="btn btn-dark text-uppercase"
+          />
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+{% endblock main_content %}

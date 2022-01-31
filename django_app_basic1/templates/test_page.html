@@ -1,0 +1,23 @@
+{% extends 'tem_layout/web_struc.html' %} {% block titile_web %} {{web_title}}
+{% endblock titile_web %} {% block main_content %}
+<div class="bg-light ps-3 pe-3">
+  <div class="pt-2 mb-3">
+    <div class="fs-4 fw-bold">Test Page</div>
+  </div>
+  <div class="mb-3">
+    <p>
+      <a class="text-decoration-none" href="{% url 'home' %}">Home</a> > Page
+    </p>
+  </div>
+
+  <div class="row">
+    <div class="col">
+        <h5>count blog = {{sum_blogs}}</h5>
+        <h5>list = {{list}}</h5>
+        <h5>first blog = {{first_blog}}</h5>
+        <h5>last blog = {{last_blog}}</h5>
+    </div>
+  </div>
+</div>
+
+{% endblock main_content %}

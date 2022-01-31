@@ -1,0 +1,105 @@
+{% extends "con_tem_layout/con_base_layout.html" %}
+
+{% block web_title %}
+    {{web_title}}
+{% endblock web_title %}
+
+{% block javascript %}
+{% load static %}
+<!-- {{ block.super }}
+<script src="{% static 'js/homemake/bjs_call_queryset.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/homemake/bjs_main.js' %}" type="text/javascript"></script>  -->
+<script type="text/javascript">
+   
+    $(document).ready(() => {
+        //NewShowStatus().then(() => {
+            
+        //})
+    });
+</script>
+{% endblock javascript %}
+
+{% block main_content %}
+    <div class="row">
+        <div class="col-lg-12 mt-5 mb-5">
+            <div class="p-4">
+                <div class="mb-3">
+                    <h3 class="text-info m-0">Contacts</h3>
+                    <div class="text-right">
+                        <a id="reload" class="btn btn-info">
+                            <i class="fas fa-sync-alt"></i>
+                        </a>
+                        <a id="new_contact" class="btn btn-info set_base_icon"       
+                        data-toggle="modal" 
+                        data-target="#show_create_view"
+                        >
+                            New
+                        </a>
+                        {% include "con_sub_create-update_p-address.html" %}
+                        {% include "con_sub_modal_lsit_p-address.html" %}
+
+                        {% include "con_sub_create-update_a-phone.html" %}
+                        {% include "con_sub_modal_list_a-phone.html" %}
+
+                        {% include "con_sub_create-update_a-email.html" %}
+                        {% include "con_sub_modal_list_a-email.html" %}
+
+                        {% include "con_modal_main_update_contact.html" %}
+                        {% include "con_modal_main_create_contact.html" %}
+                        
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col col-md-5 col-lg-7">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <select class="form-control bg-info text-white set_select_search p-1" name="key_search" id="key_search">
+                                    <option value="hn" selected="selected">HN</option>
+                                    <option value="gender">GENDER</option>
+                                </select>
+                            </div>
+                            <input type="text" class="form-control" name="value_search" id="value_search" placeholder="" aria-label="search-data">
+                            <div class="input-group-append">
+                                <button class="btn btn-info" type="button" id="btn_search">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="table-responsive-xl">
+                        <table class="table table-sm table-striped table-bordered">
+                            <thead class="align-middle text-center"> 
+                                <tr class="table-info">
+                                    <th class="align-middle">HN</th>
+                                    <th class="align-middle">Fist Name</th>
+                                    <th class="align-middle">Last Name</th>
+                                    <th class="align-middle">Name</th>
+                                    <th class="align-middle">Mobile</th>
+                                    <th class="align-middle">Nationality</th>
+                                    <th class="align-middle">Email</th>
+                                    <th class="align-middle">Gender</th>
+                                    <th class="align-middle">Manage</th>
+                                </tr>
+                                </thead>
+                                <!-- render row -->
+                                <tbody id="show_data" class="" style="height: 300px; width:auto; overflow-y: auto;">
+
+                                </tbody>    
+                                <!-- end -->
+                        </table>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <nav id="nav_for_pagination">
+                        <ul class="pagination" id="show_pagiantion">
+                            <!-- start pagination -->
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock main_content %}

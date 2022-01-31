@@ -1,0 +1,85 @@
+<div class="modal fade" id="show_create_personal_address_view" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="Personal-Address" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 70%;">
+    <div class="modal-content">
+      <div class="modal-header mb-2">
+        <div class="modal-title text-dark set_title_text" >Personal Address</div>
+        <a type="button" class="close" data-dismiss="modal" aria-label="Close" >
+            <span aria-hidden="true">&times;</span>
+          </a>
+      </div>
+      <div class="modal-body set_size_form_modal text-left">
+        <form name="frm_create_personal_address" id="frm_create_personal_address" class="form-inline row align-items-start justify-content-start justify-content-md-center" action="" method="POST" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <input type="hidden" name="contact_by" id="contact_by_mo_p-a">
+                <div class="col col-md-12 text-right mb-3">
+                    <div class="mb-1">
+                        <div class="d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Address Line1:<span class="text-danger">*</span></span>
+                            <input type="text" class="form-control form-control-sm cutom_form_control width_for_sub_create" id="address_1_mo_p-a" name="address_1">
+                        </div>
+                        <div class="d-flex justify-content-end text-left" err_for="address_1_mo_p-a"></div>
+                    </div>
+                    <div class="mb-1">
+                        <div class="d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Address Line2:</span>
+                            <input type="text" class="form-control form-control-sm cutom_form_control width_for_sub_create" id="address_2_mo_p-a" name="address_2">
+                        </div>
+                    </div>
+                    <div class="mb-1">
+                        <div class="d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Building:</span>
+                            <input type="text" class="form-control form-control-sm cutom_form_control width_for_sub_create" id="building_mo_p-a" name="building">
+                        </div>
+                    </div>
+                    <div class="mb-1">
+                        <div class="d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">District:</span>
+                            <input type="text" class="form-control form-control-sm cutom_form_control width_for_sub_create" id="district_mo_p-a" name="district">
+                        </div>
+                    </div>
+                    <div class="mb-1">
+                        <div class="d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">City:<span class="text-danger">*</span></span>
+                            <input type="text" class="form-control form-control-sm cutom_form_control width_for_sub_create" id="city_mo_p-a" name="city">
+                        </div>
+                        <div class="d-flex justify-content-end text-left" err_for="city_mo_p-a"></div>
+                    </div>
+                    <div class="mb-1">
+                        <div class="d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Province:</span>
+                            <input type="text" class="form-control form-control-sm cutom_form_control width_for_sub_create" id="province_mo_p-a" name="province">
+                        </div>
+                    </div>
+                    <div class="mb-1">
+                        <div class="d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Zip Code:</span>
+                            <input type="text" class="form-control form-control-sm cutom_form_control width_for_sub_create" id="zipcode_mo_p-a" name="zipcode">
+                        </div>
+                    </div>
+                    <div class="mb-1">
+                        <div class="d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Primary status:</span>   
+                                <div class="form-check justify-content-start cutom_form_control width_for_sub_create text-left">
+                                <input class="form-check-input position-static" type="checkbox" id="primary_status_mo_p-a" name="primary_status" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-1">
+                        <div class="d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Alignment status:</span>   
+                                <div class="form-check justify-content-start cutom_form_control width_for_sub_create text-left">
+                                <input class="form-check-input position-static" type="checkbox" id="alignment_status_mo_p-a" name="alignment_status" >
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-sm btn-info" id="btn_save_personal_address">Save</a>
+        <a type="button" class="btn btn-sm btn-info" data-dismiss="modal">Close</a>
+      </div>
+    </div>
+  </div>
+</div>

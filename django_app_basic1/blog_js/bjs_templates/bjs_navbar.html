@@ -1,0 +1,32 @@
+{% load static %}
+<div class="col-md-3 col-lg-2 mb-2">
+  <nav class="nav flex-column bg-light">
+    <div class="nav-link">
+        <img src="{% static 'image/django-icon.jpg' %}" alt="image not found." title="django-icon" class="" style="width:30px; height:auto;">
+        <span class="text-dark align-middle font-title">Django</span>
+    </div>  
+
+    <a
+      class="nav-link active text-secondary"
+      aria-current="page"
+      href="{% url 'blog_js:index' %}"
+      >Bolgs</a
+    >
+    {% if user.is_authenticated %}
+    <a class="nav-link text-danger" id="user_logout">Logout</a>
+    {% else %}
+    <a class="nav-link text-secondary" href="{% url 'blog_js:register' %}"
+      >Register</a
+    >
+    <a
+      type="button"
+      class="nav-link text-secondary"
+      data-toggle="modal" 
+      data-target="#show_login"
+      
+    >
+      Login
+    </a> 
+    {% include "bjs_login_modal.html" %} {% endif %}
+  </nav>
+</div>

@@ -1,0 +1,28 @@
+<!-- Modal -->
+<div class="modal fade" id="show_login" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title fs-4 text-primary" >Member Login</div>
+        <a class="btn-close" data-bs-dismiss="modal" aria-label="Close" href=""></a>
+      </div>
+      <div class="modal-body">
+        <form name="frm_user_login" id="frm_user_login" action="" method="POST" class="needs-validation" novalidate>
+            {% csrf_token %}
+              <div class="input-group input-group-lg mb-3 has-validation">
+                <span class="input-group-text bg-secondary text-white " id="addon-wrapping"><i class="fa fa-user mx-auto" aria-hidden="true" style="width: 20px;"></i></span>
+                <input name="username" id="username" type="text" class="form-control validate_login" placeholder="Username...">
+                <div class="invalid-feedback make_validate" validate="username_error" ></div>
+              </div>
+              <div class="input-group input-group-lg mb-3 has-validation">
+                <span class="input-group-text bg-secondary text-white " id="addon-wrapping"><i class="fa fa-key mx-auto" aria-hidden="true" style="width: 20px;"></i></span>
+                <input name="password" id="passowrd" type="password" class="form-control validate_login" placeholder="Password..." >
+                <div class="invalid-feedback make_validate" validate="password_error" ></div>
+              </div>
+              <a type="button" name="user_login" id="user_login" class="btn btn-lg btn-dark w-100 rounded-pill" >LOGIN</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

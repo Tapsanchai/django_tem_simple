@@ -1,0 +1,173 @@
+{% extends 'tem_layout/web_struc.html' %} {% block titile_web %} {{web_title}}
+{% endblock titile_web %} {% block main_content %} {% load static %}
+<div class="bg-light ps-3 pe-3">
+  <div class="pt-2 mb-3">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="fs-4 fw-bold">
+        Hello Blogs! 
+        {% if user.is_authenticated %}
+        <span class="">
+          <a
+            class="btn btn-sm btn-warning rounded-pill"
+            href="{% url 'blogs:create_blogs' %}"
+            style="font-size: 10px"
+          >
+            Add
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </a>
+        </span>
+      </div>
+      <div class="fs-6 text-muted">
+        <i class="fa fa-user-circle" aria-hidden="true"></i> 
+        {{user.first_name}}
+        {{user.last_name}}
+      </div>
+      {% else %}
+      <div class="mb-3"></div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="row mb-3">
+    <form action="{% url 'blogs:search_blogs'%}" method="get" class="col-auto">
+      <div class="input-group input-group-sm">
+        <input
+          type="text"
+          name="search_txt"
+          class="form-control"
+          placeholder="About Blogs..."
+        />
+        <button class="btn btn-outline-secondary" type="submit">Search</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="mt-2 mb-2">
+    <div class="btn-group" role="group" >
+        <a id="aGet" class="btn btn-primary">GET</a>
+        <a id="aPost" class="btn btn-info">POST</a>
+        <a id="test_js" class="btn btn-dark">....</a>
+    </div>
+</div>
+  
+  <div class="row justify-content-sm-center justify-content-md-start">
+    {% if blog_lists.count > 0 %} {% for item in blog_lists %}
+    <div class="col-sm-12 col-md-6">
+      <div class="card shadow-sm mb-3" >
+        <div class="card-header fs-5 fw-bold bg-dark text-white">
+          {{item.title}} <span class="text-info fs-6 ms-1">({{item.blog_type}})</span>
+        </div>
+        <div class="card-body" >
+          <div class="card-title fs-6 text-muted fst-italic">
+            {{item.time_created}} | {{item.create_by}}
+          </div>
+          <p class="card-text fs-6 text-truncate" >{{item.content}}</p>
+          <hr>
+
+            <p class="">
+              {% if item.blog_hashtags %}
+                {% for tag in item.blog_hashtags  %}
+                    <a class="text-decoration-none text-primary me-2" href="{% url 'blogs:tag_blogs' tag %}" id="{{tag}}" >
+                        {% if tag == '1' %}
+                        #Upskills
+                        {% elif tag == '2' %}
+                        #Recommend
+                        {% elif tag == '3' %}
+                        #Genneral
+                        {% elif tag == '4' %}
+                        #Food
+                        {% elif tag == '5' %}
+                        #New
+                        {% endif %}
+                    </a>
+                {% endfor %}
+              {% endif %}
+            </p>
+          
+          {% if user.is_authenticated %}
+          <div class="btn-group" role="group">
+            <a
+              href="{% url 'blogs:edit_blogs' item.id %}"
+              class="btn btn-secondary text-uppercase"
+              >edit</a
+            >
+            <a href="{% url 'blogs:delete_blogs' item.id %}" class="btn btn-danger text-uppercase" onclick="return confirm('Are you sure you want to Remove?');">delete</a> 
+
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %} {% else %}
+    <div class="text-center mb-3">
+      <h4 class="text-dark">Not Found!</h4>
+    </div>
+    {% endif %}
+
+    
+  </div>
+</div>
+
+{% if messages %} 
+    {% for message in messages %}
+    <h4 {% if message.tags %} class="{{ message.tags }}" {% endif %} >
+        {% if 'text-success' in message.tags %} 
+            {{message|safe}} 
+        {% elif 'text-warning' in message.tags %} 
+            {{message|safe}} 
+        {% else %} 
+            {{message}} 
+        {% endif %}
+    </h4>
+    {% endfor %} 
+{% endif %}
+
+{% endblock main_content %}
+
+{% block javascript %}
+<script type="text/javascript">
+    $(document).ready(function () {
+      $("#confirm-delete").click(function () {
+        //$(this).hide();
+        var status = confirm('Are you sure you want to delete?');
+        if (status == "OK") {
+            header("Location: create_blogs.html")
+        }
+      });
+    });
+  
+    /*
+    $( "p" ).click(function() {
+        $( this ).slideUp();
+    });
+    */
+    $("#aGet").click( async () => {
+        res = await fetchData("../render_all/?query=all", "GET", {})
+        //console.log(res)
+        if (res.success) {
+            let repon_res = res.data_json.data;
+            let set_html = "";
+            repon_res.forEach(data => {
+
+                set_html += 
+                `
+               
+                `;
+            });
+            $("#TestRender").html(set_html);
+            console.log("Render Table Successs!!");
+        }
+        
+        
+
+    });
+
+    $("#aPost").click( GetPromise = () => { 
+        fetchData("../render_all/?id=10", "POST", {}).then(res => {
+            console.log(res)
+        })
+    });
+
+  </script>
+{% endblock javascript %}
+
+

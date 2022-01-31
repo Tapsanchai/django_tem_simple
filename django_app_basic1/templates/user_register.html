@@ -1,0 +1,126 @@
+{% extends 'tem_layout/web_struc.html' %} {% block titile_web %} {{web_title}}
+{% endblock titile_web %} {% block main_content %}
+<div class="bg-light ps-3 pe-3">
+  <div class="pt-2 mb-3">
+    <div class="fs-4 fw-bold">Member Register</div>
+  </div>
+  <div class="mb-3">
+    <p>
+      <a class="text-decoration-none" href="{% url 'home' %}">Home</a> >
+      Register
+    </p>
+  </div>
+
+  <div class="">
+    {% if messages %} {% for message in messages %}
+    <h4 {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+      {% if 'text-warning' in message.tags %} {{message|safe}} {% else %}
+      {{message}} {% endif %}
+    </h4>
+    {% endfor %} {% endif %}
+  </div>
+  <div class="row">
+    <form
+      name="frm_regis"
+      action="{% url 'user_register' %}"
+      method="POST"
+      class="col-sm-12 col-md-6 needs-validation"
+      novalidate
+    >
+      {% csrf_token %}
+      <div class="mb-2">
+        <label for="username" class="form-label">Username</label>
+        <input
+          type="text"
+          name="username_txt"
+          class="form-control"
+          id="id_username"
+          placeholder="username..."
+          required
+        />
+        <div class="invalid-feedback make_validate" validate="username_error" ></div>
+      </div>
+      <div class="mb-2">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          name="userpassword_txt"
+          class="form-control"
+          id=""
+          placeholder="password..."
+          required
+        />
+        <div class="invalid-feedback make_validate" validate="password_error" ></div>
+      </div>
+      <div class="mb-2">
+        <label for="re_password" class="form-label">Confirm-Password</label>
+        <input
+          type="password"
+          name="chk_userpassword_txt"
+          class="form-control"
+          id=""
+          placeholder="password again..."
+          required
+        />
+        <div class="invalid-feedback make_validate" validate="confirm_password_error" ></div>
+      </div>
+      <div class="mb-2">
+        <label for="firstname" class="form-label">Firstname</label>
+        <input
+          type="text"
+          name="firstname_txt"
+          class="form-control"
+          id=""
+          placeholder="firstname..."
+          required
+        />
+        <div class="invalid-feedback make_validate" validate="firstname_error" ></div>
+      </div>
+      <div class="mb-2">
+        <label for="lastname" class="form-label">Lastname</label>
+        <input
+          type="text"
+          name="lastname_txt"
+          class="form-control"
+          id=""
+          placeholder="lastname..."
+          required
+        />
+        <div class="invalid-feedback make_validate" validate="lastname_error" ></div>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input
+          type="email"
+          name="useremail_txt"
+          class="form-control"
+          id=""
+          placeholder="email..."
+          required
+        />
+        <div class="invalid-feedback make_validate" validate="email_error" ></div>
+      </div>
+      <div class="mb-3">
+        <div class="btn-group" role="group">
+          <input
+            type="submit"
+            value="Save"
+            name="Create_Account"
+            class="btn btn-primary text-uppercase"
+          />
+          <input
+            type="reset"
+            value="Reset"
+            name="Reset"
+            class="btn btn-dark text-uppercase"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock main_content %} 
+
+{% block javascript %}
+
+{% endblock javascript %}

@@ -1,0 +1,59 @@
+<div class="modal fade" id="show_create_alternate_phone_view" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="Alternate-Phone" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 70%;">
+    <div class="modal-content">
+      <div class="modal-header mb-2">
+        <div class="modal-title text-dark set_title_text" >Alternate Phone</div>
+        <a type="button" class="close" data-dismiss="modal" aria-label="Close" >
+            <span aria-hidden="true">&times;</span>
+          </a>
+      </div>
+      <div class="modal-body set_size_form_modal text-left">
+        <form name="frm_create_alternate_phone" id="frm_create_alternate_phone" class="form-inline row align-items-start justify-content-start justify-content-md-center" action="" method="POST" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <input type="hidden" name="contact_by" id="contact_by_mo_a-p">
+                <div class="col col-md-12 text-right mb-3">
+                    <div class="mb-1">
+                      <div class="d-flex flex-row justify-content-end">
+                          <span class="align-middle set_size_form_modal">Alternate phone:<span class="text-danger">*</span></span>
+                          <input type="tel" class="form-control form-control-sm cutom_form_control width_for_sub_create" id="alternate_phone_mo_a-p" name="alternate_phone" placeholder="+66 Numbers or Only Numbers">
+                      </div>
+                      <div class="d-flex justify-content-end text-left" err_for="alternate_phone_mo_a-p"></div>
+                    </div>
+                    <div class="mb-1">
+                      <div class="d-flex flex-row justify-content-end">
+                          <span class="align-middle set_size_form_modal">Phone type:<span class="text-danger">*</span></span>
+                          <select name="phone_type" class="form-control form-control-sm cutom_form_control width_for_sub_create" id="phone_type_mo_a-p">
+                              <option value selected="selected">Please select...</option>
+                              {% for instance in form_alternate_phone.phone_type.field.queryset %}
+                                  <option value="{{ instance.id }}">{{ instance.type_title }}</option>
+                              {% endfor %}
+                          </select>
+                      </div>
+                      <div class="d-flex justify-content-end text-left" err_for="phone_type_mo_a-p"></div>
+                    </div>
+                    <div class="mb-1">
+                      <div class="d-flex flex-row justify-content-end">
+                          <span class="align-middle set_size_form_modal">Description:<span class="text-danger">*</span></span>
+                          <textarea class="form-control form-control-sm cutom_form_control_textarea width_for_sub_create" name="description" id="description_mo_a-p" rows="3"></textarea>
+                      </div>
+                      <div class="d-flex justify-content-end text-left" err_for="description_mo_a-p"></div>
+                    </div><div class="mb-1">
+                      <div class="d-flex flex-row justify-content-end">
+                          <span class="align-middle set_size_form_modal">Primary status:</span>   
+                              <div class="form-check justify-content-start cutom_form_control width_for_sub_create text-left">
+                              <input class="form-check-input position-static" type="checkbox" id="primary_status_mo_a-p" name="primary_status" >
+                          </div>
+                      </div>
+                    </div>
+
+                </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-sm btn-info" id="btn_save_alternate_phone">Save</a>
+        <a type="button" class="btn btn-sm btn-info" data-dismiss="modal">Close</a>
+      </div>
+    </div>
+  </div>
+</div>

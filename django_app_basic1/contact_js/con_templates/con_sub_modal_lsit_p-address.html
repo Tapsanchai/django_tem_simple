@@ -1,0 +1,54 @@
+<div class="modal fade" id="show_personal_address_view" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="Personal-Address" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 80%;">
+    <div class="modal-content">
+      <div class="modal-header mb-2">
+        <div class="modal-title text-dark set_title_text" >Personal Address</div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body set_size_form_modal text-left">
+        <div class="text-right">
+            <a id="new_personal_address" class="btn btn-sm btn-info set_base_icon"       
+            data-toggle="modal" data-target="#show_create_personal_address_view">
+                New
+            </a>
+        </div>
+        <div class="mb-2">
+            <h4 class="text-info m-0">Search Results</h4>
+        </div>
+        <div class="mb-3">
+            <div class="table-responsive " >
+                <table class="table table-sm table-striped table-bordered">
+                    <thead class="align-middle text-center"> 
+                        <tr class="table-info">
+                            <th class="align-middle"></th>
+                            <th class="align-middle">Primary</th>
+                            <th class="align-middle">Address Line1</th>
+                            <th class="align-middle">Address Line2</th>
+                            <th class="align-middle">Building</th>
+                            <th class="align-middle">District</th>
+                            <th class="align-middle">City</th>
+                            <th class="align-middle">Province</th>
+                            <th class="align-middle">Zip Code</th>
+                            <th class="align-middle">Alignment Flag</th>
+                            <th class="align-middle">Manage</th>
+
+                        </tr>
+                        </thead>
+                        <!-- render row -->
+                        <tbody id="show_data_personal_address" class="" >
+
+                        </tbody>
+                        <!-- end -->
+                </table>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-sm btn-info" id="btn_save_personal_address_change_status">Save</a>
+        <a type="button" class="btn btn-sm btn-info" data-dismiss="modal">Close</a>
+      </div>
+    </div>
+  </div>
+</div>

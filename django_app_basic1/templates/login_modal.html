@@ -1,0 +1,52 @@
+<!-- Modal -->
+{% if request.session.get_popup %}
+<div class="modal fade show" id="modal_login" tabindex="-1" aria-modal="true" style="display: block;" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title fs-4 text-primary" >Member Login</div>
+        <a class="btn-close" data-bs-dismiss="modal" aria-label="Close" href="{% url 'blogs:link_login' 'non-popup' %}"></a>
+      </div>
+      <div class="modal-body">
+        <form action="{% url 'blogs:user_login' %}" method="POST">
+            {% csrf_token %}
+            <div class="input-group input-group-lg flex-nowrap mb-3">
+                <span class="input-group-text bg-secondary text-white " id="addon-wrapping"><i class="fa fa-user" aria-hidden="true"></i></span>
+                <input name="username_txt" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+              </div>
+              <div class="input-group input-group-lg flex-nowrap mb-3">
+                <span class="input-group-text bg-secondary text-white " id="addon-wrapping"><i class="fa fa-key mx-auto" aria-hidden="true" style="weight: 10px;"></i></span>
+                <input name="password_txt" type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping">
+              </div>
+              <input type="submit" name="Login" class="btn btn-lg btn-dark w-100 rounded-pill" value="LOGIN">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<div class="modal fade" id="modal_login" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title fs-4 text-primary" >Member Login</div>
+        <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="{% url 'blogs:user_login' %}" method="POST">
+            {% csrf_token %}
+            <div class="input-group input-group-lg flex-nowrap mb-3">
+                <span class="input-group-text bg-secondary text-white" id="addon-wrapping"><i class="fa fa-user" aria-hidden="true"></i></span>
+                <input name="username_txt" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+              </div>
+              <div class="input-group input-group-lg flex-nowrap mb-3">
+                <span class="input-group-text bg-secondary text-white" id="addon-wrapping"><i class="fa fa-key" aria-hidden="true"></i></span>
+                <input name="password_txt" type="password" class="form-control" placeholder="password" aria-label="Username" aria-describedby="addon-wrapping">
+              </div>
+              <input type="submit" name="Login" class="btn btn-lg btn-dark w-100 rounded-pill" value="LOGIN">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}

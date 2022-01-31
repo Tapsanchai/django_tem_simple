@@ -1,0 +1,204 @@
+<div class="modal fade" id="show_create_view" tabindex="-1" aria-labelledby="Create-Contacts" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 90%;">
+    <div class="modal-content">
+      <div class="modal-header mb-2">
+        <div class="modal-title text-dark set_title_text" >Create Contacts</div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body set_size_form_modal">
+        <form name="frm_create_contact" id="frm_create_contact" class="form-inline row align-items-start justify-content-start justify-content-lg-center" action="" method="POST" class="needs-validation" novalidate>
+            {% csrf_token %}
+
+                <div class="col-12 col-md-5 col-lg-4 text-right mb-3">
+                    <div class="mb-1">
+                        <div class="d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">HN#:<span class="text-danger">*</span></span>
+                            <input type="text" class="form-control form-control-sm cutom_form_control" id="hn_create" name="hn">
+                        </div>
+                        <div class="d-flex justify-content-end text-left" err_for="hn_create"></div>
+                    </div>
+                    <div class="mb-1">
+                        <div class="d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Title:<span class="text-danger">*</span></span>
+                            <input type="text" class="form-control form-control-sm cutom_form_control" id="title_th_create" name="title_th">
+                        </div>
+                        <div class="d-flex justify-content-end text-left" err_for="title_th_create"></div>
+                    </div>
+                    <div class="mb-1">
+                        <div class="d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">First Name:<span class="text-danger">*</span></span>
+                            <input type="text" class="form-control form-control-sm cutom_form_control" id="f_name_th_create" name="f_name_th">
+                        </div>
+                        <div class="d-flex justify-content-end text-left" err_for="f_name_th_create"></div>
+                    </div>
+                    <div class="mb-1">
+                        <div class=" d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Last Name:<span class="text-danger">*</span></span>
+                            <input type="text" class="form-control form-control-sm cutom_form_control" id="l_name_th_create" name="l_name_th">
+                        </div>
+                        <div class="d-flex justify-content-end text-left" err_for="l_name_th_create"></div>
+                    </div>
+                    <div class="mb-1">
+                        <div class=" d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Middle:</span>
+                            <input type="text" class="form-control form-control-sm cutom_form_control" id="m_name_th_create" name="m_name_th">
+                        </div>
+                        <div class="d-flex justify-content-end text-left" err_for="m_name_th_create"></div>
+                    </div>
+                    <div class="mb-1">
+                        <div class=" d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Email:</span>
+                            <input type="email" class="form-control form-control-sm cutom_form_control" id="email_create" name="email">
+                        </div>
+                        <div class="d-flex justify-content-end text-left" err_for="email_create"></div>
+                    </div>
+                    <div class="mb-1">
+                        <div class=" d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Mobile Phone#:</span>
+                            <input type="tel" class="form-control form-control-sm cutom_form_control" id="mobile_phone_create" name="mobile_phone">
+                        </div>
+                        <div class="d-flex justify-content-end text-left" err_for="mobile_phone_create"></div>
+                    </div>
+                    <div class="mb-1">
+                        <div class=" d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Home#:</span>
+                            <input type="text" class="form-control form-control-sm cutom_form_control" id="home_create" name="home">
+                        </div>
+                        <div class="d-flex justify-content-end text-left" err_for="home_create"></div>
+                    </div>
+                    <div class="mb-1">
+                        <div class=" d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Date of Birth:<span class="text-danger">*</span></span>
+                            <input type="date" class="form-control form-control-sm cutom_form_control" id="date_of_birth_create" name="date_of_birth" value="">
+                        </div>
+                        <div class="d-flex justify-content-end text-left" err_for="date_of_birth_create"></div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-5 col-lg-4 text-right mb-3">
+                    <div class="mb-1">
+                        <div class=" d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Title (EN):<span class="text-danger">*</span></span>
+                            <input type="text" class="form-control form-control-sm cutom_form_control" id="title_en_create" name="title_en">
+                        </div>
+                        <div class="d-flex justify-content-end text-left" err_for="title_en_create"></div>
+                    </div>
+                    <div class="mb-1">
+                        <div class=" d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">First Name (EN):<span class="text-danger">*</span></span>
+                            <input type="text" class="form-control form-control-sm cutom_form_control" id="f_name_en_create" name="f_name_en" >
+                        </div>
+                        <div class="d-flex justify-content-end text-left" err_for="f_name_en_create"></div>
+                    </div>
+                    <div class="mb-1">
+                        <div class=" d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Last Name (EN):<span class="text-danger">*</span></span>
+                            <input type="text" class="form-control form-control-sm cutom_form_control" id="l_name_en_create" name="l_name_en" >
+                        </div>
+                        <div class="d-flex justify-content-end text-left" err_for="l_name_en_create"></div>
+                    </div>
+                    <div class="mb-1">
+                        <div class=" d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Middle (EN):</span>
+                            <input type="text" class="form-control form-control-sm cutom_form_control" id="m_name_en_create" name="m_name_en" >
+                        </div>
+                        <div class="d-flex justify-content-end text-left" err_for="m_name_en_create"></div>
+                    </div>
+                    <div class="mb-1">
+                        <div class=" d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Alternate Email:</span>
+                            <div class="cuttom_contant_file d-flex">
+                                <input type="email" class="form-control form-control-sm cutom_form_control_2" id="block_alternate_email" name="alternate_email" disabled>
+                                <a id="new_alternate_email_create" class="btn btn-info cutom_button_form_control">
+                                <i class="fas fa-list"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-1">
+                        <div class=" d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Alternate Phone#:</span>
+                            <div class="cuttom_contant_file d-flex">
+                                <input type="tel" class="form-control form-control-sm cutom_form_control_2" id="block_alternate_phone" name="alternate_phone" disabled>
+                                <a id="new_alternate_phone_create" class="btn btn-info cutom_button_form_control">
+                                <i class="fas fa-list"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-1">
+                        <div class=" d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Personal Address:</span>
+                            <div class="cuttom_contant_file d-flex">
+                                <input type="text" class="form-control form-control-sm cutom_form_control_2" id="block_personal_address" name="address_1" disabled>
+                                <a id="new_personal_address_create" class="btn btn-info cutom_button_form_control">
+                                <i class="fas fa-list"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-1">
+                        <div class=" d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Work#:</span>
+                            <input type="text" class="form-control form-control-sm cutom_form_control" id="work_create" name="work">
+                        </div>
+                        <div class="d-flex justify-content-end text-left" err_for="work_create"></div>
+                    </div>
+                    <div class="mb-1">
+                        <div class=" d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Age:</span>
+                            <input type="text" class="form-control form-control-sm cutom_form_control cal_age" id="age_create" name="age" value="" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-5 col-lg-4 text-right mb-3">
+                    <div class="mb-1">
+                        <div class=" d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Work Phone Extension:</span>
+                            <input type="text" class="form-control form-control-sm cutom_form_control" id="work_phone_exten_create" name="work_phone_exten">
+                        </div>
+                        <div class="d-flex justify-content-end text-left" err_for="work_phone_exten"></div>
+                    </div>
+                    <div class="mb-1">
+                        <div class=" d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Main Fax#:</span>
+                            <input type="text" class="form-control form-control-sm cutom_form_control" id="main_fax_create" name="main_fax">
+                        </div>
+                        <div class="d-flex justify-content-end text-left" err_for="main_fax"></div>
+                    </div>
+                    <div class="mb-1">
+                        <div class=" d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Gender:<span class="text-danger">*</span></span>
+                            <select name="gender" class="form-control form-control-sm cutom_form_control" id="gender_create">
+                                <option value selected="selected" >Please select...</option>
+                                {% for instance in form_contact.gender.field.queryset %}
+                                    <option value="{{ instance.id }}">{{ instance.genders_title }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="d-flex justify-content-end text-left" err_for="gender_create"></div>
+                    </div>
+                    <div class="mb-1">
+                        <div class=" d-flex flex-row justify-content-end">
+                            <span class="align-middle set_size_form_modal">Nationality:<span class="text-danger">*</span></span>
+                            <select name="nationality" class="form-control form-control-sm cutom_form_control" id="nationality_create">
+                                <option value selected="selected" >Please select...</option>
+                                {% for instance in form_contact.nationality.field.queryset %}
+                                    <option value="{{ instance.id }}">{{ instance.nationality_title }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="d-flex justify-content-end text-left" err_for="nationality_create"></div>
+                    </div>
+                </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-sm btn-info" id="btn_save_create_contact_full">Save</a>
+        <a type="button" class="btn btn-sm btn-info" data-dismiss="modal">Close</a>
+      </div>
+    </div>
+  </div>
+</div>

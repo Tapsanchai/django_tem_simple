@@ -1,0 +1,59 @@
+<div class="modal fade" id="show_create_alternate_email_view" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="Alternate-Email" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 70%;">
+    <div class="modal-content">
+      <div class="modal-header mb-2">
+        <div class="modal-title text-dark set_title_text" >Alternate Email</div>
+        <a type="button" class="close" data-dismiss="modal" aria-label="Close" >
+            <span aria-hidden="true">&times;</span>
+          </a>
+      </div>
+      <div class="modal-body set_size_form_modal text-left">
+        <form name="frm_create_alternate_email" id="frm_create_alternate_email" class="form-inline row align-items-start justify-content-start justify-content-md-center" action="" method="POST" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <input type="hidden" name="contact_by" id="contact_by_mo_a-e">
+                <div class="col col-md-12 text-right mb-3">
+                    <div class="mb-1">
+                      <div class="d-flex flex-row justify-content-end">
+                          <span class="align-middle set_size_form_modal">Alternate email:<span class="text-danger">*</span></span>
+                          <input type="email" class="form-control form-control-sm cutom_form_control width_for_sub_create" id="alternate_email_mo_a-e" name="alternate_email">
+                      </div>
+                      <div class="d-flex justify-content-end text-left" err_for="alternate_email_mo_a-e"></div>
+                    </div>
+                    <div class="mb-1">
+                      <div class="d-flex flex-row justify-content-end">
+                          <span class="align-middle set_size_form_modal">Email type:<span class="text-danger">*</span></span>
+                          <select name="email_type" class="form-control form-control-sm cutom_form_control width_for_sub_create" id="email_type_mo_a-e">
+                              <option value selected="selected">Please select...</option>
+                              {% for instance in form_alternate_email.email_type.field.queryset %}
+                                  <option value="{{ instance.id }}">{{ instance.type_title }}</option>
+                              {% endfor %}
+                          </select>
+                      </div>
+                      <div class="d-flex justify-content-end text-left" err_for="email_type_mo_a-e"></div>
+                    </div>
+                    <div class="mb-1">
+                      <div class="d-flex flex-row justify-content-end">
+                          <span class="align-middle set_size_form_modal">Description:<span class="text-danger">*</span></span>
+                          <textarea class="form-control form-control-sm cutom_form_control_textarea width_for_sub_create" name="description" id="description_mo_a-e" rows="3"></textarea>
+                      </div>
+                      <div class="d-flex justify-content-end text-left" err_for="description_mo_a-e"></div>
+                    </div><div class="mb-1">
+                      <div class="d-flex flex-row justify-content-end">
+                          <span class="align-middle set_size_form_modal">Primary status:</span>   
+                              <div class="form-check justify-content-start cutom_form_control width_for_sub_create text-left">
+                              <input class="form-check-input position-static" type="checkbox" id="primary_status_mo_a-e" name="primary_status" >
+                          </div>
+                      </div>
+                    </div>
+
+                </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-sm btn-info" id="btn_save_alternate_email">Save</a>
+        <a type="button" class="btn btn-sm btn-info" data-dismiss="modal">Close</a>
+      </div>
+    </div>
+  </div>
+</div>

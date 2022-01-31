@@ -1,0 +1,24 @@
+{% extends 'tem_layout/web_struc.html' %}
+{% block titile_web %} {{web_title}} {% endblock titile_web %}
+{% block main_content %}
+<h1>Hello Login </h1>
+<p><a href="{% url 'home' %}">Home</a> > Login </p>
+{% if messages %} 
+{% for message in messages %}
+<h4 {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+  {% if 'text-warning' in message.tags %} {{message|safe}} {% else %} {{message}}
+  {% endif %}
+</h4>
+{% endfor %} 
+{% endif %}
+<form action="{% url 'user_login' %}" method="POST">
+    {% csrf_token %}
+    Username: <input type="text" name="username_txt" id="">
+    <br>
+    Password: <input type="password" name="userpassword_txt" id="">
+    <br>
+    <input type="submit" value="Save" name="Login">
+    <input type="reset" value="Reset" name="Reset">
+    
+</form>
+{% endblock main_content %}
